@@ -1,0 +1,41 @@
+Genel Bilgiler
+Base URL: http://127.0.0.1:8000/api/
+Kimlik Doğrulama: Bearer Token (Sanctum)
+Rate Limit: Kullanıcı başına dakikada maksimum 10 istek
+
+
+Kullanıcı Kayıt (Register)
+Endpoint: POST /api/register
+Açıklama: Yeni kullanıcı kaydı oluşturur.
+Gerekli Parametreler:
+name (string) → Zorunlu
+email (string) → Zorunlu, benzersiz
+password (string) → Zorunlu, minimum 6 karakter
+
+
+Kullanıcı Girişi (Login)
+Endpoint: POST /api/login
+Açıklama: Kullanıcı giriş yapar ve erişim token’ı alır.
+Gerekli Parametreler:
+email (string) → Zorunlu
+password (string) → Zorunlu
+
+Kullanıcı Bilgilerini Getir
+Endpoint: GET /api/user
+Açıklama: Giriş yapmış kullanıcının bilgilerini döndürür.
+Kimlik Doğrulama: Bearer Token gerekli.
+Headers:
+Authorization: Bearer YOUR_TOKEN_HERE
+
+
+Kullanıcı Çıkış Yap (Logout)
+Endpoint: POST /api/logout
+Açıklama: Giriş yapan kullanıcıyı sistemden çıkarır ve token’ı iptal eder.
+Kimlik Doğrulama: Bearer Token gerekli.
+Headers:
+Authorization: Bearer YOUR_TOKEN_HERE
+
+
+ Rate Limit Testi
+Endpoint: GET /api/user
+Açıklama: API, her kullanıcıya dakikada maksimum 10 istek hakkı verir.
